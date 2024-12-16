@@ -1,5 +1,9 @@
 # App test
 
+### set up python environment
+
+https://fastapi.tiangolo.com/virtual-environments/#upgrade-pip
+
 ### start
 
 ```bash
