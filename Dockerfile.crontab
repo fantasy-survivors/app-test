@@ -8,7 +8,7 @@ COPY requirements.txt .
 RUN pip install --upgrade pip
 RUN pip install --no-cache-dir -r requirements.txt
 
-COPY /scripts .
+# COPY /scripts .
 COPY crontab .
 COPY run-crontab.sh .
 RUN chmod +x run-crontab.sh
