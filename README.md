@@ -1,8 +1,26 @@
 # App test
 
+### install python with brew
+
+```bash
+brew update
+brew upgrade
+brew install python@3.11
+echo 'export PATH="<python path>/bin:$PATH"' >> ~/.zshrc
+source ~/.zshrc
+```
+
 ### set up python environment
 
 https://fastapi.tiangolo.com/virtual-environments/#upgrade-pip
+
+```bash
+python -m venv .venv
+source .venv/bin/activate
+python -m pip install --upgrade pip
+pip install -r requirtements.txt
+source .venv/bin/activate
+```
 
 ### start
 

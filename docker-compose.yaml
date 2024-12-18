@@ -19,7 +19,9 @@ services:
       retries: 5
 
   app:
-    build: .
+    build:
+      context: .
+      dockerfile: Dockerfile
     depends_on:
       db:
         condition: service_healthy
@@ -29,4 +31,19 @@ services:
       POSTGRES_USER: myuser
       POSTGRES_PASSWORD: mypassword
       POSTGRES_DB: mydb
-    command: ["python", "app.py"]
+    command: ["python", "./scripts/app.py"]
+
+  crontab:
+    build:
+      context: .
+      dockerfile: Dockerfile.crontab
+    depends_on:
+      db:
+        condition: service_healthy
+    environment:
+      POSTGRES_HOST: db # Name of the Postgres service (Docker internal DNS)
+      POSTGRES_PORT: 5432
+      POSTGRES_USER: myuser
+      POSTGRES_PASSWORD: mypassword
+      POSTGRES_DB: mydb
+    command: ["./run-crontab.sh"]
